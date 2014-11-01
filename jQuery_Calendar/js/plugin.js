@@ -65,7 +65,7 @@
 		var currentDate = 1, $currentWeek;
 
 		//iterate weeks
-		for (var row = 0; row < 5; row++){
+		for (var row = 0; row < 6; row++){
 			$currentWeek = $('<tr></tr>')
 
 			//iterate days of week
