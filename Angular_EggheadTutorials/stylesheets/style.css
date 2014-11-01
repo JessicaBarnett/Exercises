@@ -1,0 +1,105 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.clear:after{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+/* Buttons */
+
+div.linkContainer{
+	width: 70%;
+	margin: 0 auto;
+}
+
+
+button{
+	background-color: lawngreen;
+	float: left;
+	width: 10%;
+	min-height: 3rem;
+	font-size: 1rem;
+	padding: .3rem;
+	margin: 1rem 2%;
+	border: none;
+
+}
+
+.linkContainer button{
+	width: 40%;
+	min-height: 5rem;
+}
+
+button:hover{
+	background-color: lightgreen;
+}
+
+
+/*the color-changing trick on page 1*/
+
+.blue{
+	color: blue;
+}
+
+.green{
+	color: green;
+}
+
+.red{
+	color: red;
+}
+
+.orange{
+	color: orange;
+}
+
+.yellow{
+	color: yellow;
+}
+
+.violet, .purple{
+	color: violet;
+}
+
+
+/*tables on page 2*/
+
+table, tr{
+	width: 60%;
+	margin: 0 auto;
+}
+
+td {
+	padding: 1rem;
+	margin: 0;
+}
+
+tr:nth-of-type(odd){
+	background-color: lightGray;
+}
+
+.thin{
+	width: 8%;
+	float: left;
+}
+
+
+/*target for hover directives on page 5*/
+
+.target{
+	width: 20%;
+	height: 20vh;
+	margin: 2rem auto;
+	background-color: steelblue;
+	text-align: center;
+	padding: 2rem;
+}
+
+.tomato {
+	background-color: tomato;
+}

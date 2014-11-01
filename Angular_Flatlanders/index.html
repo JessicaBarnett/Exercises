@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<!--Anything with an ng- prefix is a directive-->
+<!--Anything between {{}} is an expression-->
+
+<html lang="en" ng-app="GemStore">  
+	<head>
+		<title>Flatlander Gemstore</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	</head>
+	<body>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+
+		<a href="../index.html"><button class="home">home</button></a>
+
+		<header>
+			<h1>Flatlander Handcrafted Gems</h1>
+			<h2>- A Flatlander Store -</h2>
+		</header>
+
+		<div id="store" ng-controller="StoreController as store">
+
+			<div  class="product" ng-repeat="product in store.products">
+
+				<product-title></product-title>
+
+				<img ng-src="{{product.images[0].thumb}}" />
+				<button ng-show="product.canPurchase">Add to cart!</button>
+
+				<product-panels></product-panels>
+
+			</div>
+		</div>
+
+	</body>
+</html>

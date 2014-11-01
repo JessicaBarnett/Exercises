@@ -1,0 +1,16 @@
+td {
+	width: 10%;
+	height: 4rem;
+	border: 2px solid black;
+	text-align: center;
+	line-height: 3rem;
+}
+
+tr{
+	width: 100%;
+}
+
+table{
+	width: 50%;
+	margin: 0 auto;
+}

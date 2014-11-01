@@ -1,0 +1,32 @@
+.clear:after {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+div#buttonWrap{
+	width: 80%;
+	margin: 0 auto;
+}
+
+button {
+	width: 25%;
+	height: 3rem;
+	margin: 1rem 3%;
+	float: left;
+
+	line-height: 2.5rem;
+	text-align: center;
+	font-size: 1rem;
+
+	border: none;
+	background-color: dodgerBlue;
+}
+
+button:hover{
+	background-color: lightblue;
+}
+
+button.home{
+	float: none;
+}

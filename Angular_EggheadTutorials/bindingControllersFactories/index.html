@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="myApp"  lang="en"> <!--ONLY ONE NG-APP PER PAGE!! -->
+	<head>
+		<title>Binding, Controllers, and Factories</title>
+		<meta charset="UTF-8">
+		<!-- <link rel="stylesheet" type="text/css" href="stylesheets/reset.css"> -->
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+	</head>
+	<body>
+
+		<a href="../index.html"><button>home</button></a>
+		<!--basic binding-->
+		<div> 
+			<p>Type Something!</p>
+			<input type="text" ng-model="hello" placeholder="Your text will appear below!"/>
+			<h1>{{hello}}</h1>
+		</div>
+		<hr/>
+
+		<!--change element styling with ng-model-->
+		<div> 
+			<p>Type red, blue, green, orange, purple, or yellow:</p>
+			<input type="text" ng-model="color"> <!--Where is the data object coming from?  is it built-in with ng-app?-->
+			<h1 class="{{color}}">This Text is... {{color}}</h1>
+		</div>
+		<hr/>
+
+		<!--Use a controller so you can get your data from the javascript-->
+		<div> 
+			<div ng-controller="BasicCtrl">
+				<h1>{{data.greeting}} world!</h1>
+				<h1>{{data.farewell + " world..."}}</h1>
+			</div>
+		</div>
+		<hr/>
+
+		<!--How to make 2 controllers Talk to each other
+			use a service, which passes an object to both controllers.
+			set scope.data to that object, and voila!  
+			Bindable data coming from your js, and going to your js via text inputs
+
+			Second Controller also uses a method on the $scope
+		-->
+		<div> 
+			<div ng-controller="FirstCtrl">
+				<p> This is the First Controller. </p>
+				<input type="text" ng-model="data.message">
+				<h1>{{data.message}}</h1>
+			</div>
+		</div>
+
+		<div> 
+			<div ng-controller="SecondCtrl">
+				<p> This is the Second Controller. </p>
+				<input type="text" ng-model="data.message">
+				<h1>{{data.message}}</h1>
+				<hr/>					
+				
+				<p>This is our message reversed!</p> 
+				<h1>{{reversedMessage()}}</h1>
+
+				<p>This is our message reversed, but w/o referencing the $scope in the method.</p>
+				<h1>{{betterReversedMessage(data.message)}}</h1>
+			
+				<p>This is our message reversed with a custom filter!</p>
+				<h1>{{data.message | reverse}}</h1>
+			</div>
+		</div>		
+		<hr/>
+
+
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

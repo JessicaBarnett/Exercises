@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"> <!--ONLY ONE NG-APP PER PAGE!! -->
+	<head>
+		<title>Angular - Alphabet</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body ng-app="camelLetters">
+		<a href="../index.html"><button class="home">home</button></a>
+
+		<div ng-controller="camelCtrl">
+				<p>Stringified, after all is said and done: </p>
+				<p ng-bind="alphabet.stringified"></p>
+			<table>
+					<tr ng-repeat="letter in alphabet.letters">
+					<td>{{letter.value}}</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

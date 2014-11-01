@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"> 
+	<head>
+		<title>Isolate Scopes</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+		<style>
+			*{
+				box-sizing: border-box;
+			}
+			body{
+				background-color: steelblue;
+			}
+			h1{
+				width: 100%;
+			}
+
+			.clearfix:after{
+				clear: both;
+				display: table;
+				content: "";
+			}
+
+			.wrap{
+				width: 70%;
+				height: 100%;
+				padding: 1rem;
+				margin: 2rem auto;
+				background-color: white;
+			}
+			.block{
+				width: 45%;
+				margin: 2%;
+				float: left;
+			}
+
+			.wrap button, .wrap input{
+				width: 85%;
+			}
+
+			#networks{
+				width: 100%;
+				height: 24rem;
+				background-color: lightGray;
+			}
+
+		</style>
+	</head>
+	<body>
+		<a href="../index.html"><button>home</button></a>
+		<div class="wrap clearfix" ng-app="scopeApp">
+
+			<h1> Networks - review of isolate scope and ways to pass stuff into them.</h1>
+			<div id="networks" ng-controller="PhoneCtrl">
+				<!--"number" is passed as a string-->
+				<!--network is 2-way linked to "network" on controller scope-->
+				<!--make-call is passed to the isolate scope, redefined on it's scope with &, and -->
+				<phone class="block" number="555-1234" network="network" make-call="leaveVoicemail(number, message)"></phone>
+				<phone class="block" number="888-8888" network="network" make-call="leaveVoicemail(number, message)"></phone>
+				<phone class="block" number="101-0101" network="network" make-call="leaveVoicemail(number, message)"></phone>
+				<phone class="block" number="911" network="network" make-call="leaveVoicemail(number, message)"></phone>
+			</div>
+
+			<div class="block">
+				<kid></kid>
+				<kid></kid>
+				<kid></kid>
+				<kid></kid>
+			</div>
+			<div class="block" ng-controller="ChoreCtrl">
+				<big-kid done="logChore(chore)"></big-kid>
+				<big-kid done="logChore(chore)"></big-kid>
+				<big-kid done="logChore(chore)"></big-kid>
+			</div>
+
+
+<!-- 			<h2>Phone home - &, & vs linking functions, =</h2> -->
+			<div ng-controller="CallCtrl" class="block">
+				<phoneHome dial="call(whoToCall)"></phoneHome> <!-- taking call method from controller and passing it into phone directive's isolated scope -->
+			</div>
+			<div ng-controller="FlavorCtrl" class="block">
+				<!--part 1-->
+				<div drink flavor="strawberry juice"></div>
+				<!--part 2-->
+				<div ice-cream flavor="chocolate ice cream"></div>
+				<!--part 3-->
+				<!-- ctrlFlavor is evaluated as a string and passed with the "@"
+					 Also, if you set it up with a model as with the input, it will update the controller's ctrlFlavor
+				-->
+				<div ice-cream flavor="{{ctrlFlavor}}"></div>
+				<input type="text" ng-model="ctrlFlavor">
+
+				<!--now testing out the "=" scope-->
+				<div lollipop flavor="ctrlFlavor"></div>
+
+			</div>
+
+
+		</div>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

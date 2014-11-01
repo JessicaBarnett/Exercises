@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"> 
+	<head>
+		<title>Custom Directives</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+		<style>
+
+			#ghostBox{
+				width: 30%;
+				height: 10rem;
+				background-color: lightgray;
+				margin: 1rem auto;
+				padding: 1rem;
+			}
+
+			#wrap {
+				background-color: white;
+				width: 75%;
+				margin: 0 auto;
+				padding: 1rem;
+			}
+
+			body{
+				background-color: steelblue;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html"><button>home</button></a>
+		<div id="wrap" ng-app="KnickKnacks">
+				<superman></superman>
+				<div  wonderwoman></div>
+				<div batman jeangray></div>
+				<div class="flash"></div>
+				<!-- directive:aquaman -->
+
+
+			<div id="ghostBox" ng-controller="Ghost as ghost">
+				<div say-boo scaree="Joey"></div>
+				<div say-boo scaree="Jim"></div>
+				<div say-boo scaree="Jake"></div>
+				<div say-boo scaree="Jerry"></div>
+			</div>
+
+			<script type="text/javascript" src="js/angular.js"></script>
+			<script type="text/javascript" src="js/script.js"></script>
+		</div>
+	</body>
+</html>

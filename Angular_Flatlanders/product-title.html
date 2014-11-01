@@ -1,0 +1,13 @@
+<!--to use includes: 
+
+	add   
+		ng-include="'product-title.html'"   
+	to the direct parent of the elements you want to extract.
+
+	note the double and single quotes.  ng-include is expecting a string as input.  that's why we need both.
+
+	ng-include does an ajax request to pull the include file down when the button is clicked
+-->
+
+<h3 class="pull-left"> {{ product.name }} </h3>
+<h3 class="pull-right"> {{ product.price | currency}} </h3>

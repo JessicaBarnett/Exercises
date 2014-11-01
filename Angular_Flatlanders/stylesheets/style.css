@@ -1,0 +1,91 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+#store {
+	width: 40%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+header{
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+
+}
+
+img {
+	border-radius: 150px;
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.product button {
+
+	margin: 2rem 1rem 1rem;
+
+}
+
+.group {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+.productHeader{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.productHeader h3:first-child{
+	margin-left: 1rem;
+
+}
+
+.productHeader h3:last-child{
+	margin-right: 1rem;
+}
+
+.product {
+	margin: 4rem 0;
+	padding-bottom: 2rem;
+	border: 1px solid rgba(0, 0, 0, .1);
+	border-radius: 10px;
+}
+
+.product ul{
+	padding-top: 1rem;
+	margin-left: 1rem;
+}
+
+.product li{
+	padding: 0 .5rem;
+}
+.product li a{
+	color: mediumvioletred;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+	background-color: mediumvioletred;
+}
+
+cite {
+	display: block;
+}
+
+select, textarea, input{
+	width: 90%;
+	margin: .5rem auto;
+}
+
+.ng-invalid.ng-dirty{
+	border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty{
+	border-color: #78FA89;
+}

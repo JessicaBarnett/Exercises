@@ -1,0 +1,80 @@
+<section>
+	<ul class= "nav nav-pills">
+		<li ng-class="{active: panel.isSelected(1)}"> 
+		<!--note: 'active' = class to add IF 'tab === 1' evaluates to true-->
+			<a href ng-click="panel.selectTab(1)">Description</a> 
+		</li>
+		<li ng-class="{active: panel.isSelected(2)}"> 
+			<a href ng-click="panel.selectTab(2)">Specification</a> 
+		</li>
+		<li ng-class="{active: panel.isSelected(3)}"> 
+			<a href ng-click="panel.selectTab(3)">Reviews</a> 
+		</li>
+	</ul>
+	<div class="panel" ng-show="panel.isSelected(1)">
+		<h4>Description</h4>
+		<p>{{product.description}}</p>
+	</div>
+	<div class="panel" ng-show="panel.isSelected(2)">
+		<h4>Specification</h4>
+		<blockquote>None yet!</blockquote>
+	</div>
+	<div class="panel" ng-show="panel.isSelected(3)">
+		<h4>Reviews</h4>
+		<blockquote ng-repeat="review in product.reviews">
+			<b>{{review.stars}} Stars</b>
+			{{review.body}}
+			<cite> - {{review.author}}</cite>
+		</blockquote>
+
+
+		<form name="reviewForm" ng-controller="ReviewController as reviewCtrl"  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+			<blockquote>
+				<b>{{reviewCtrl.review.stars}} Stars</b>
+				{{reviewCtrl.review.body}}
+				<cite> - {{reviewCtrl.review.author}}</cite>
+			</blockquote>
+			<select ng-model="reviewCtrl.review.stars" required>
+				<option value="1">1 star</option>
+				<option value="2">2 stars</option>
+				<option value="3">3 stars</option>
+				<option value="4">4 stars</option>
+				<option value="5">5 stars</option>
+			</select>
+			<textarea ng-model="reviewCtrl.review.body" required></textarea>
+			<input name="author" type="email" ng-model="reviewCtrl.review.author" required/>
+			<!--Another note: the vlidation process adds a class to the form fields, "ng-pristine or ng-dirty (dirty if user has tyed something, pristine if not), ng-valid/ng-invalid"  these classes can be used to style the page differently if the field ivalid or invalid-->
+			<!--<div>review form is {{reviewForm.$valid}}</div>-->
+			<!--Note - forms have a $valid property built-in as part of angular.  it is true or false: true if all required pieces are filled in-->
+			<input type="submit" value="Submit Review"/>
+
+			<!--Things that can be validated with Angular
+				emails, urls, numbers (can specify a min=1 or max=2)
+			-->
+		</form>
+
+<!--Reviews, No Controller
+		<h4>Reviews</h4>
+		<blockquote ng-repeat="review in product.reviews">
+			<b>{{review.stars}} Stars</b>
+			<p>{{review.body}}</p>
+			<cite>by: {{review.author}}</cite>
+		</blockquote>
+		<form name="reviewForm">
+			<blockquote>
+				<b>{{review.stars}} Stars</b>
+				<p>{{review.body}}</p>
+				<cite>by: {{review.author}}</cite>
+			</blockquote>
+			<select ng-model="review.stars">
+				<option value="1">1 star</option>
+				<option value="2">2 stars</option>
+				<option value="3">3 stars</option>
+				<option value="4">4 stars</option>
+				<option value="5">5 stars</option>
+			</select>
+			<textarea ng-model="review.body"></textarea>
+			<input type="email" ng-model="review.author"/>
+			<input type="submit" value="Submit Review"/>
+		</form> -->
+	</div>

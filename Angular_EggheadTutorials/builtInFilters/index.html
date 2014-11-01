@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"> <!--ONLY ONE NG-APP PER PAGE!! -->
+	<head>
+		<title>Built-in Filters</title>
+		<meta charset="UTF-8">
+		<!-- <link rel="stylesheet" type="text/css" href="stylesheets/reset.css"> -->
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+	</head>
+	<body>
+		<a href="../index.html"><button>home</button></a>
+		<div ng-app="myApp"> 
+			<div ng-controller="FiltersCtrl">
+				<label>Filter the last column of letters</label>
+				<input type="text" ng-model="search"/>
+				<div class="clear">
+					<table class="thin">
+						<td>Numbers</td>
+						<tr ng-repeat="number in numbers.list">
+							<td>{{number.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Ascending</td>
+						<tr ng-repeat="number in numbers.list | orderBy:'value'">
+							<td>{{number.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Descending</td>
+						<tr ng-repeat="number in numbers.list | orderBy:'-value'">
+							<td>{{number.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Currency</td>
+						<tr ng-repeat="number in numbers.list">
+							<td>{{number.value | currency}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>last 10</td>
+						<tr ng-repeat="number in numbers.list | limitTo:-10">
+							<td>{{number.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>first 5</td>
+						<tr ng-repeat="number in numbers.list | limitTo:5">
+							<td>{{number.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Letters</td>
+						<tr ng-repeat="letter in letters.list">
+							<td>{{letter.value}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Uppercase</td>
+						<tr ng-repeat="letter in letters.list">
+							<td>{{letter.value | uppercase}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Lowercase</td>
+						<tr ng-repeat="letter in letters.list">
+							<td>{{letter.value | lowercase}}</td>
+						</tr>
+					</table>
+					<table class="thin">
+						<td>Everything</td>
+						<tr ng-repeat="letter in letters.list | limitTo:15 | orderBy:value | filter:search">
+							<td>{{letter.value}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Angular - Odd and Even</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body ng-app="oddEvenApp">
+		<a href="../index.html"><button class="home">home</button></a>
+
+		<div ng-controller="TableCtrl"> 
+
+			<label>Search for a number!</label>
+			<input type="text" ng-model="search.value">
+
+			<form>
+				<label>Both?</label>
+				<input checked name="oddEvenRadio" type="radio" value="" ng-model="radioSearch.oddEven"> 
+				<label>Odd Only?</label>
+				<input name="oddEvenRadio" type="radio" value="Odd" ng-model="radioSearch.oddEven">
+				<label>Even Only?</label>
+				<input name="oddEvenRadio" type="radio" value="Even" ng-model="radioSearch.oddEven">
+			</form>
+
+			<table id="numberTable">
+
+				<tr ng-repeat="number in numbers.array | orderBy: 'value' | filter: search | filter: radioSearch">
+					<td>{{number.value}}</td>
+					<td>{{number.oddEven}}</td>
+				</tr>
+
+			</table>
+		</div>
+
+
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

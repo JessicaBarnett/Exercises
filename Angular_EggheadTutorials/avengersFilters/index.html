@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en"> <!--ONLY ONE NG-APP PER PAGE!! -->
+	<head>
+		<title>Avengers Filters</title>
+		<meta charset="UTF-8">
+		<!-- <link rel="stylesheet" type="text/css" href="stylesheets/reset.css"> -->
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+	</head>
+	<body>
+		<a href="../index.html"><button>home</button></a>
+		<div ng-app="myApp"> 
+			<div ng-controller="AvengersCtrl">
+<!-- 				<form>
+					<p>Choose how you'd like to filter the avengers cast:</p>
+					
+					<input type="radio" name="chooseFilter" ng-model="theFilter" value="$"/>
+					<label for="Anywhere">Find Text Anywhere</label><br>
+
+					<input type="radio" name="chooseFilter" ng-model="theFilter" value="name"/>
+					<label for="Actors">Search Actors Only</label><br>
+					
+					<input type="radio" name="chooseFilter" ng-model="theFilter" value="character"/>
+					<label for="Characters">Search Characters Only</label><br>
+				</form>
+				<p>You choose:  {{theFilter}}</p> -->
+				<p>Search name:</p>
+				<input type="text" ng-model="search.name"/>
+				<p>Search character: </p>
+				<input type="text" ng-model="search.character"/> 
+				<p>Search name and character: </p>
+				<input type="text" ng-model="search.$"/> 
+				<table>
+					<!--Note: tne ng-repeat will repeat the ELEMENT IT IS ATTACHED TO
+					I would put it on the table tag if I were to guess, but that gives me a bazilion tables.  not what we want here.
+					if you want tr's repeating, put the repeat on the tr tag, etc.-->
+					<tr ng-repeat="actor in avengers.cast | orderBy: 'name' | filter:search">
+						<td>{{actor.name}}</td>
+						<td>{{actor.character}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>
