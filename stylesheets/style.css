@@ -1,3 +1,7 @@
+body {
+	color: black;
+}
+
 .clear:after {
 	display: table;
 	clear: both;
