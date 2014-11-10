@@ -45,8 +45,11 @@
 	/*****  Build Methods  *****/
 
 	$.fn.calendar.initializeCalendar = function(){
-		return $('<table class="calendarTable"></table>').append('<tr><th colspan="7">'+ this.getMonthName(this.startMonth) +'</th></tr>')
-			.append(
+		return $('<table id="calendarTable"></table>').append('<tr>'+
+			'<th colspan="1"><button class="prevMonth"></button></th>' +
+			'<th colspan="5">' + this.getMonthName(this.startMonth) +'</th>'+
+			'<th colspan="1"><button class="nextMonth"></button></th>' +
+			'</tr>').append(
 				$('<tr></tr>')
 					.append('<th>Sun</th>')
 					.append('<th>Mon</th>')
@@ -95,8 +98,11 @@
 
 	}
 
-	$.fn.calendar.makeCalendar = function($element){
-		this.setDefaultValues(new Date());
+	$.fn.calendar.makeCalendar = function($element, date){
+		if (!date) //date is optional.  if no date is passed a new date set to today's date will be used
+			date = new Date();
+
+		this.setDefaultValues(date);
 
 		$calendar = this.buildCalendar();
 
@@ -106,6 +112,13 @@
 		//add handlers to calendar dates 
 		$("td.date").click(this.toggleCalendar);
 		$("td.date").hover(this.printDate, this.clearDate);
+
+		//adds handlers to next/prev month buttons
+		// $(".prevMonth").click(this.prevMonth);
+		// $(".nextMonth").click(this.nextMonth);
+
+		$(".prevMonth").click($.proxy(this.prevMonth, this));
+		$(".nextMonth").click($.proxy(this.nextMonth, this));
 	}
 
 
@@ -122,13 +135,27 @@
 	};
 
 	$.fn.calendar.toggleCalendar = function(){
-		if ($(".calendarTable").length)
-			$(".calendarTable").remove();
+		if ($("#calendarTable").length)
+			$("#calendarTable").remove();
 		else
 			$.fn.calendar.makeCalendar($(this));
 	};
 
-	$(".calendar").click($.fn.calendar.toggleCalendar);
+	$.fn.calendar.prevMonth = function(date){
+		// console.log(this.startMonth + "/" + 01 + "/" + this.year);
+		// console.log($(this));
+		$("#calendarTable").remove();
+		$.fn.calendar.makeCalendar($("#calendar"), new Date("10/01/14"));
+		// $.fn.calendar.makeCalendar($(".calendar"), new Date(this.startMonth, 01,  this.year));
+	};
+
+	$.fn.calendar.nextMonth = function(date){
+		// $.fn.calendar.makeCalendar($(this), new Date(date.getFullYear, date.month+1, 1));
+		$("#calendarTable").remove();
+		$.fn.calendar.makeCalendar($("#calendar"), new Date("12/01/14"));
+	};
+
+	$("#calendar").click($.fn.calendar.toggleCalendar);
 
 
 }(jQuery));

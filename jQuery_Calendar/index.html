@@ -13,13 +13,43 @@
  		.date:hover {
  			background-color: lightgray;
  		}
+
+ 		/*.monthName:before, .monthName:after, */
+ 		.prevMonth, .nextMonth{
+			border: none;
+			outline: none;
+
+			background-color: transparent;
+ 			width: 0;
+			height: 0;
+			border-style: solid;
+ 		}
+
+ 		.nextMonth{
+ 			border-width: .7rem 0 .7rem .5rem;
+			border-color: transparent transparent transparent black;
+ 		}
+
+ 		.nextMonth:hover{
+			border-color: transparent transparent transparent lightgray;
+		}
+
+ 		.prevMonth{
+ 			border-width: .7rem .5rem .7rem 0;
+ 			border-color: transparent black transparent transparent;
+ 		}
+
+		.prevMonth:hover{
+			border-color: transparent lightgray transparent transparent;
+		}
+
  	</style>
 
 	</head>
 	<body>
 		<a href="../index.html"><button>home</button></a>
 		<h1>Use the Date Picker to Pick a Date!</h1>
-		<button class="calendar"> toggle Calendar! </button>
+		<button id="calendar"> toggle Calendar! </button>
 		<p id="chosenDate"></p>
 
 		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
